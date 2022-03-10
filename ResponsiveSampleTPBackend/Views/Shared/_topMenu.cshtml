@@ -1,0 +1,23 @@
+﻿@model ResponsiveSampleTPBackend.Models.User
+<!--top menu-->
+<div class="topnavigation" id="top_navbar">
+    @Html.ActionLink("Inicio", "Index", "SecondaryPage", routeValues: new { page = "Inicio"})
+    @Html.ActionLink("Contenido", "Index", "SecondaryPage", routeValues: new { page = "Contenido"})
+    @Html.ActionLink("Requerimientos", "Index", "SecondaryPage", routeValues: new { page = "Requerimientos"})
+    @Html.ActionLink("Lenguajes", "Index", "SecondaryPage", routeValues: new { page = "Lenguajes"})
+    @Html.ActionLink("Frameworks", "Index", "SecondaryPage", routeValues: new { page = "Frameworks"})
+    @Html.ActionLink("Proyectos", "Index", "SecondaryPage", routeValues: new { page = "Proyectos"})
+    @Html.ActionLink("El Instructor", "Index", "SecondaryPage", routeValues: new { page = "El Instructor"})
+    @Html.ActionLink("Reseñas", "Index", "SecondaryPage", routeValues: new { page = "Reseñas"})
+    @Html.ActionLink("Blog", "Index", "SecondaryPage", routeValues: new { page = "Blog"})
+    @Html.ActionLink("Contacto", "Index", "SecondaryPage", routeValues: new { page = "Contacto"})
+
+    @{
+        byte[] sessionValue;
+        bool found = Context.Session.TryGetValue("ISLOGGEDIN", out sessionValue);
+        if (found && sessionValue[0] == 1)
+        {
+            @Html.ActionLink(string.Format("Bienvenido {0}", Model.Name), "UserDetails", "Home");
+        }
+    }
+</div>

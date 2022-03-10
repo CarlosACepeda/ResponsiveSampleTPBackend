@@ -1,0 +1,30 @@
+﻿@model ResponsiveSampleTPBackend.Models.User
+<div class="main">
+    <div class="card">
+        <div class="card_container">
+            <label class="main_titles"> Crear un nuevo usuario</label>
+            <hr class="dotted_divider">
+            <p class="main_paragraph">
+                @using (Html.BeginForm(actionName: "Create", controllerName: "Home", FormMethod.Post))
+                {
+                    <div><label class="label_titles"> Nombre </label></div>
+                    <div>@Html.TextBoxFor(model => model.Name)</div>
+                    <div><span class="main_subtitles_within_paragraph">@Html.ValidationMessageFor(model => model.Name)</span></div>
+                    <div><label class="label_titles"> Contraseña: </label></div>
+                    <div>@Html.PasswordFor(model => model.Password)</div>
+                    <div><span class="main_subtitles_within_paragraph">@Html.ValidationMessageFor(model => model.Password)</span></div>
+                    <div><label class="label_titles"> Nombre de Usuario: </label></div>
+                    <div>@Html.TextBoxFor(model => model.Username)</div>
+                    <div><span class="main_subtitles_within_paragraph">@Html.ValidationMessageFor(model => model.Username)</span></div>
+                    <div><label class="label_titles"> Numero de Telefono: </label></div>
+                    <div>@Html.TextBoxFor(model => model.Phonenumber)</div>
+                    <div><span class="main_subtitles_within_paragraph">@Html.ValidationMessageFor(model => model.Phonenumber)</span></div>
+                    <div><button class="menu_actions" id="login" type="submit">Guardar </button></div>
+                }
+            </p>
+        </div>
+    </div>
+    <div>
+        <a class="right_aligned_links" href="https://google.com">[Ver histórico de noticias]</a>
+    </div>
+</div>

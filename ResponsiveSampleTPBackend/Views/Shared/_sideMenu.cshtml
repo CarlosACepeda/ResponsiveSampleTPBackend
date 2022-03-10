@@ -1,0 +1,68 @@
+﻿@model ResponsiveSampleTPBackend.Models.User
+<div class="hamburguer_menu">
+    <button id="toggle_menu"><img src="resources/menu.png"></button>
+</div>
+<br>
+<div class="menu" id="menu">
+    <div class="card menu_card">
+        <div class="card_container">
+            @{
+
+                byte[] sessionValue;
+                bool found = Context.Session.TryGetValue("ISLOGGEDIN", out sessionValue);
+                if (!found || sessionValue[0] == 0)
+                {
+                    <div><label class="menu_titles"> Entrar a la web</label></div>
+                    <div><label class="label_titles"> Usuario: </label></div>
+                    @using (Html.BeginForm(actionName: "Index", controllerName: "Home", FormMethod.Post))
+                    {
+                        <div>@Html.TextBoxFor(model => model.Username)</div>
+                        <div><label class="label_titles"> Contraseña: </label></div>
+                        <div>@Html.PasswordFor(model => model.Password)</div>
+                        <div><button class="menu_actions" id="login" type="submit">Entrar </button></div>
+                    }
+                    <div><a class="links" href="https://google.com">Zona de Alumnos</a></div>
+                    <div><a class="links" href="https://google.com">Zona del Profesor</a></div>
+                    <div><a class="links" href="https://google.com">Acceso a calificaciones</a></div>
+                }
+                else
+                {
+                    <div><label class="menu_titles"> Hola @Model.Name </label></div>
+                    <br />
+                    <div><a class="links" href="https://google.com">Zona de Alumnos</a></div>
+                    <div><a class="links" href="https://google.com">Zona del Profesor</a></div>
+                    <div><a class="links" href="https://google.com">Acceso a calificaciones</a></div> }
+            }
+            <br> <!--emulates padding bottom in respect to 'dotted divider'-->
+
+        </div>
+        <hr class="dotted_divider">
+        <label class="menu_titles"> Enlaces de interés</label>
+        <ul>
+            <li>
+                <div><a class="links" href="https://google.com">Master en JavaScript</a></div>
+            </li>
+            <li>
+                <div><a class="links" href="https://google.com">Master en PHP</a></div>
+            </li>
+            <li>
+                <div><a class="links" href="https://google.com">Master en Frameworks JS</a></div>
+            </li>
+            <li>
+                <div><a class="links" href="https://google.com">Master en webs full-stack</a></div>
+            </li>
+            <li>
+                <div><a class="links" href="https://google.com">victorroblesweb.es</a></div>
+            </li>
+        </ul>
+        <hr class="dotted_divider">
+        <div>
+            <label class="menu_centered label_titles"> Frase del dia:</label>
+        </div>
+        <p class="label_titles">Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit</p>
+        <div><a class="not_aligned_links" href="https://google.com">Leer más frases</a></div>
+        <hr class="dotted_divider">
+    </div>
+
+
+</div>

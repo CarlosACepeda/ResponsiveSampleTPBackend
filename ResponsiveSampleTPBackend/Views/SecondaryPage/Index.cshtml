@@ -1,0 +1,5 @@
+﻿@model ResponsiveSampleTPBackend.ViewModels.SecondaryPageViewModel
+@{
+    ViewData["Title"] = Model.PágeName;
+}
+@Html.ActionLink(Model.PágeName, "Index", "Home")

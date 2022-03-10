@@ -1,0 +1,50 @@
+﻿@model ResponsiveSampleTPBackend.Models.User
+<div class="main">
+    <div class="card">
+        <div class="card_container">
+            <label class="main_titles"> Hobbies de @Model.Name</label>
+            <hr class="dotted_divider">
+            <p class="main_paragraph">
+                @Html.ActionLink("Asociar Nuevo Hobby", "SetHobby", "Hobby", new { userId = Model.ID }, htmlAttributes: new { @class = "right_aligned_links" })
+
+                <br>
+                <table class="table_within_card">
+                    <tr>
+                        <th>
+                            <span class="main_subtitles_within_paragraph">ID</span>
+                        </th>
+                        <th>
+                            <span class="main_subtitles_within_paragraph"> Nombre de Hobby</span>
+                        </th>
+                        <th>
+                            <span class="main_subtitles_within_paragraph">Acciones</span>
+                        </th>
+                    </tr>
+                    @foreach (var hobby in Model.Hobbies)
+                    {
+                        <tr>
+                            <th>
+                                <span class="main_text_within_paragraph">
+                                    @hobby.ID
+                                </span>
+                            </th>
+                            <th>
+                                <span class="main_text_within_paragraph">
+                                    @hobby.Name
+                                </span>
+                            </th>
+                            <th>
+                                @Html.ActionLink("Quitar", "Delete", "Hobby", routeValues: new { hobbyId = hobby.ID, userId= Model.ID }, htmlAttributes: new { @class = "not_aligned_links" })
+                            </th>
+                        </tr>
+                    }
+
+                </table>
+
+            </p>
+        </div>
+    </div>
+    <div>
+        <a class="right_aligned_links" href="https://google.com">[Ver histórico de noticias]</a>
+    </div>
+</div>

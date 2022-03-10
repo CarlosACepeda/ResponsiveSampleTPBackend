@@ -1,0 +1,64 @@
+﻿@model ICollection<ResponsiveSampleTPBackend.Models.User>
+<div class="main">
+    <div class="card">
+        <div class="card_container">
+            <label class="main_titles"> Listado de usuarios</label>
+            <hr class="dotted_divider">
+            <p class="main_paragraph">
+                <br>
+                <div>
+                @Html.ActionLink("Crear Usuario", "Create", "Home", null,  htmlAttributes: new { @class= "right_aligned_links" })
+                </div>
+                <table class="table_within_card">
+                    <tr>
+                        <th>
+                            <span class="main_subtitles_within_paragraph">Nombre</span>
+                        </th>
+                        <th>
+                            <span class="main_subtitles_within_paragraph"> Numero de telefono</span>
+                        </th>
+                        <th>
+                            <span class="main_subtitles_within_paragraph">Hobbies Actuales</span>
+                        </th>
+                        <th>
+                            <span class="main_subtitles_within_paragraph">Acciones</span>
+                        </th>
+                    </tr>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <th>
+                                <span class="main_text_within_paragraph">
+                                    @user.Name
+                                </span>
+                            </th>
+                            <th>
+                                <span class="main_text_within_paragraph">
+                                    @user.Phonenumber
+                                </span>
+                            </th>
+                            <th>
+                                @foreach (var hobby in user.Hobbies)
+                                {
+                                    <span class="main_text_within_paragraph">
+                                        @hobby.Name
+                                    </span><br />
+                                }
+                            </th>
+                            <th>
+                                @Html.ActionLink("Editar Usuario", "Update", "Home", routeValues: new { userId= user.ID }, htmlAttributes: new { @class = "not_aligned_links" })
+                                @Html.ActionLink("Eliminar Usuario", "Delete", "Home", routeValues: new { userId= user.ID }, htmlAttributes: new { @class = "not_aligned_links" })
+                                @Html.ActionLink("Gestionar Hobbies", "Index", "Hobby", routeValues: new { userId= user.ID }, htmlAttributes: new { @class = "not_aligned_links" })                                
+                            </th>
+                        </tr>
+                    }
+
+                </table>
+
+            </p>
+        </div>
+    </div>
+    <div>
+        <a class="right_aligned_links" href="https://google.com">[Ver histórico de noticias]</a>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ResponsiveSampleTPBackend</title>
+    <link rel="stylesheet" href="~/css/main_styles.css" />
+</head>
+<body>
+    <div class="grid-container">
+        <div class="header">
+            <div>
+                <img class="top_image" src="~/resources/top_header_bg.jpg">
+            </div>
+            <partial name="_topMenu" model="@ViewData["UserModel"] as ResponsiveSampleTPBackend.Models.User"/>
+        </div>
+        <partial name="_sideMenu" model="@ViewData["UserModel"] as ResponsiveSampleTPBackend.Models.User" />
+        @RenderBody()
+        <div class="footer">
+            <div>
+                <p>
+                    <span class="main_text_within_paragraph">
+                        © Desarrollado por Carlos Cepeda<br>
+                        Más contenido de formación y desarrollo Web en
+                    </span><a class="in-text_links" href="https://google.com">ejemplo.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="~/scripts/main_script.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
